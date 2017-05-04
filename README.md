@@ -3,14 +3,6 @@
 ### Requirements
 
 
-Car adverts should have the following fields:
-* **id** (_required_): **int** or **guid**, choose whatever is more convenient for you;
-* **title** (_required_): **string**, e.g. _"Audi A4 Avant"_;
-* **fuel** (_required_): gasoline or diesel, use some type which could be extended in the future by adding additional fuel types;
-* **price** (_required_): **integer**;
-* **new** (_required_): **boolean**, indicates if car is new or used;
-* **mileage** (_only for used cars_): **integer**;
-* **first registration** (_only for used cars_): **date** without time.
 
 Service should:
 * have functionality to return list of all car adverts;
@@ -58,3 +50,11 @@ If you used local repository, zip it (folder called ".git" in your working direc
 Create a git repository (either local or public one on GitHub) that contains a RESTful web-service written in Scala. The service should allow users to place new car adverts and view, modify and delete existing car adverts.
 
 
+Car adverts should have the following fields:
+* **id** (_required_): **int** or **guid**, choose whatever is more convenient for you;
+* **title** (_required_): **string**, e.g. _"Audi A4 Avant"_;
+* **fuel** (_required_): gasoline or diesel, use some type which could be extended in the future by adding additional fuel types;
+* **price** (_required_): **integer**;
+* **new** (_required_): **boolean**, indicates if car is new or used;
+* **mileage** (_only for used cars_): **integer**;
+* **first registration** (_only for used cars_): **date** without time.
