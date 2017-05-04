@@ -1,5 +1,7 @@
 # restautodemo
 
+TODO explain the paths
+
 ### Requirements
 
 

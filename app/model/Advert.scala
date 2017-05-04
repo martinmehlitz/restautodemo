@@ -7,7 +7,7 @@ sealed trait FuelType
  case object Gasoline extends FuelType
  case object Diesel extends FuelType
 
-case class Advert(id: Int, title: String, fuel: FuelType, price: Int, isNew: Boolean, mileage: Option[Int],
+case class Advert(id: String, title: String, fuel: FuelType, price: Int, isNew: Boolean, mileage: Option[Int],
                   firstRegistration: Option[String])
 
 object Advert {
@@ -32,5 +32,6 @@ object Advert {
       )
     }
   }
+
 
 }

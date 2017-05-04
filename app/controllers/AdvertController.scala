@@ -4,7 +4,7 @@ import javax.inject._
 
 import play.api._
 import play.api.mvc._
-import model.{Advert, Diesel}
+import model.{Advert, Diesel, InMemoryAdvertPersistance}
 import play.api.libs.json.Json
 
 /**
@@ -14,14 +14,10 @@ import play.api.libs.json.Json
 class AdvertController @Inject() extends Controller {
 
   /**
-   * Create an Action to render an HTML page.
-   *
-   * The configuration in the `routes` file means that this method
-   * will be called when the application receives a `GET` request with
-   * a path of `/`.
+   * TOdo
    */
-  def getAdvert = Action { implicit request =>
-    Ok(Json.toJson(Advert(1, "Titel",Diesel, 500, true, None, None))).as(JSON)
+  def getAllAdverts = Action { implicit request =>
+    Ok(InMemoryAdvertPersistance.retrieveAllAdverts().map(a => Json.toJson(a))).as(JSON)
   }
 
 
