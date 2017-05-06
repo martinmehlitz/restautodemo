@@ -4,7 +4,7 @@
 
 # endpoints
 
-## GET /advert
+## GET /advert?sort=price&sortAsc=false
 
 ## GET /advert/id
 
@@ -22,28 +22,10 @@ TODO explain the paths
 * Implementation of error handling
 * Database persistence
 * Test automation
-
-### Requirements
-
-
-
-Service should:
- * optional sorting by any field specified by query parameter, default sorting - by **id**;
-* have functionality to modify car advert by id;
-* have functionality to delete car advert by id;
-* have validation (see required fields and fields only for used cars);
-* accept and return data in JSON format, use standard JSON date format for the **first registration** field.
-
-### Additional requirements
-
+* validation (see required fields and fields only for used cars);
+* use standard JSON date format for the **first registration** field.
 * Service should be able to handle CORS requests from any domain.
 * Think about test pyramid and write unit-, integration- and acceptance-tests if needed.
-* It's not necessary to document your code, but having a readme.md for developers who will potentially use your service would be great.
-
-### Tips, hints & insights
-
-* Feel free to make any assumptions as long as you can explain them.
-
 
 ### Sending us your work
 
@@ -67,5 +49,8 @@ Car adverts should have the following fields:
 
 Service should:
 * have functionality to return list of all car adverts;
+ * optional sorting by any field specified by query parameter, default sorting - by **id**;
 * have functionality to return data for single car advert by id;
 * have functionality to add car advert;
+* have functionality to modify car advert by id;
+* have functionality to delete car advert by id;

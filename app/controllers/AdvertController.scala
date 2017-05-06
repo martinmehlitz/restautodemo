@@ -23,9 +23,11 @@ class AdvertController @Inject() extends Controller {
   /**
     * TOdo
     */
-  def retrieveAll = Action { implicit request =>
+  def retrieveAll(sortOption: Option[String], sortAscOption: Option[Boolean]) = Action { implicit request =>
     Try {
-      new JsArray(advertPersistance.retrieveAll().map(a => Json.toJson(a)))
+      val sort = if (sortOption.isDefined) sortOption.get else "id"
+      val sortAsc = if (sortAscOption.isDefined) sortAscOption.get else true
+      new JsArray(advertPersistance.retrieveAll(sort, sortAsc).map(a => Json.toJson(a)))
     } match {
       case Success(result) => Ok(result).as(JSON)
       case Failure(e) => InternalServerError(e.getMessage)

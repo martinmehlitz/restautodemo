@@ -10,7 +10,7 @@ GET     /                           controllers.HomeController.index
 GET     /assets/*file               controllers.Assets.versioned(path="/public", file: Asset)
 
 
-GET     /advert                     controllers.AdvertController.retrieveAll
+GET     /advert                     controllers.AdvertController.retrieveAll(sort: Option[String], sortAsc: Option[Boolean])
 POST    /advert                     controllers.AdvertController.create
 PUT     /advert                     controllers.AdvertController.update
 GET     /advert/:id                 controllers.AdvertController.retrieve(id: String)

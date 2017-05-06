@@ -1,7 +1,7 @@
 package model
 
 trait AdvertPersistence {
-  def retrieveAll(): Seq[Advert]//TODO sorting
+  def retrieveAll(sort: String, sortAsc: Boolean): Seq[Advert]
   def retrieve(id: String): Option[Advert]
   def create(advert: Advert): Advert
   def update(advert: Advert): Advert

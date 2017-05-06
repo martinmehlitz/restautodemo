@@ -8,11 +8,23 @@ import java.util.UUID
 object InMemoryAdvertPersistance extends AdvertPersistence {
 
   var adverts: Map[String, Advert] = Map("bla" -> Advert("bla", "title", Diesel, 500, true, None, None),
-    "blub" -> Advert("blub", "title2", Diesel, 5000, true, None, None))
+    "blub" -> Advert("aaaa", "Automobile adverts are awesome", Gasoline, 100, true, None, None))
+
+  private def sortById(a1: Advert, a2: Advert): Boolean = {
+    a1.id.compareTo(a2.id) < 0
+  }
+  private def sortByPrice(a1: Advert, a2: Advert): Boolean = {
+    a1.price.compareTo(a2.price) < 0
+  }
 
   //TODO sorting
-  override def retrieveAll(): Seq[Advert] = {
-    adverts.values.toSeq
+  override def retrieveAll(sort: String, sortAsc: Boolean): Seq[Advert] = {
+    var result = adverts.values.toSeq
+    result = sort match {
+      case "price" => result.sortWith(sortByPrice)
+      case _ => result.sortWith(sortById)
+    }
+    if (!sortAsc) result.reverse else result
   }
 
   override def retrieve(id: String): Option[Advert] = adverts.get(id)
