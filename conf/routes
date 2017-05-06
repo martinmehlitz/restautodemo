@@ -12,5 +12,7 @@ GET     /assets/*file               controllers.Assets.versioned(path="/public",
 
 GET     /advert                     controllers.AdvertController.retrieveAll
 POST    /advert                     controllers.AdvertController.create
+PUT     /advert                     controllers.AdvertController.update
 GET     /advert/:id                 controllers.AdvertController.retrieve(id: String)
+DELETE  /advert/:id                 controllers.AdvertController.delete(id: String)
 

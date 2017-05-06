@@ -18,6 +18,8 @@ object InMemoryAdvertPersistance extends AdvertPersistence {
   override def retrieve(id: String): Option[Advert] = adverts.get(id)
 
   override def create(advert: Advert): Advert = {
+    if (!advert.isNew && (advert.firstRegistration.isEmpty || advert.mileage.isEmpty))
+      throw new Error("Invalid advert. Used cars need to define the date of the first registration and the current mileage")
     val result = advert.copy(id = UUID.randomUUID.toString)
     adverts = adverts + (result.id -> result)
     result

@@ -45,14 +45,14 @@ object Advert {
         "title" -> advert.title,
         "fuel"-> advert.fuel.toString,
         "price" -> advert.price,
-        "new" -> advert.isNew
+        "isNew" -> advert.isNew
       )
       case  false => Json.obj(
         "id" -> advert.id,
         "title" -> advert.title,
         "fuel"-> advert.fuel.toString,
         "price" -> advert.price,
-        "new" -> advert.isNew,
+        "isNew" -> advert.isNew,
         "mileage" -> advert.mileage.get,
         "firstRegistration" -> advert.firstRegistration.get
       )
@@ -60,16 +60,5 @@ object Advert {
   }
 
   implicit val advertReads = Json.reads[Advert]
-//  implicit val advertReads: Reads[Advert] =
-//        (JsPath \ "id").read[String] and
-//        (JsPath \ "title").read[String] and
-//        (JsPath \ "fuel").read[String]  and
-//        (JsPath \ "price").read[Int](min(0)) and
-//        (JsPath \ "new").read[Boolean] and
-//          (JsPath \ "mileage").read[Option[String]] and
-//          (JsPath \ "firstRegistration").read[Option[String]]
-//
-//  )(Advert.apply _)
-//  }
 
 }
