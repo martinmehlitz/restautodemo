@@ -11,6 +11,7 @@ sbt run
 Retrieve a list of all adverts in the system.
 Optional query params:
 * sort: default is "id", currently implemented "id" and "price"
+* sortAsc: whether to sort ascending (true) or descending (false) default is true
 
 ## GET /advert/id
 Retrieve a specific advert by id
