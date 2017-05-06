@@ -10,5 +10,7 @@ GET     /                           controllers.HomeController.index
 GET     /assets/*file               controllers.Assets.versioned(path="/public", file: Asset)
 
 
-GET     /advert                     controllers.AdvertController.getAdvert
+GET     /advert                     controllers.AdvertController.retrieveAll
+POST    /advert                     controllers.AdvertController.create
+GET     /advert/:id                 controllers.AdvertController.retrieve(id: String)
 

@@ -1,11 +1,37 @@
 package model
 
 
+import play.api.libs.json.Reads._
 import play.api.libs.json._
+import play.api.libs.json._
+import play.api.libs.json.Reads._
+import play.api.libs.functional.syntax._
+
+import scala.util.{Failure, Success, Try}
+
 
 sealed trait FuelType
  case object Gasoline extends FuelType
  case object Diesel extends FuelType
+object FuelType {
+  def apply(s: String) = {
+    s match {
+      case "Gasoline" => Gasoline
+      case "Diesel" => Diesel
+      case _ => throw new Error("$s is not a valid FuelType")
+    }
+  }
+
+  implicit val fuelTypeReads = new Reads[FuelType] {
+    def reads(json: JsValue): JsResult[FuelType] = json match {
+      case JsString(v) => Try{apply(v)} match {
+        case Success(ft) => JsSuccess(ft)
+        case Failure(e) => JsError(e.getMessage)
+      }
+      case _ => JsError("String value expected for FuelType")
+    }
+  }
+}
 
 case class Advert(id: String, title: String, fuel: FuelType, price: Int, isNew: Boolean, mileage: Option[Int],
                   firstRegistration: Option[String])
@@ -33,5 +59,17 @@ object Advert {
     }
   }
 
+  implicit val advertReads = Json.reads[Advert]
+//  implicit val advertReads: Reads[Advert] =
+//        (JsPath \ "id").read[String] and
+//        (JsPath \ "title").read[String] and
+//        (JsPath \ "fuel").read[String]  and
+//        (JsPath \ "price").read[Int](min(0)) and
+//        (JsPath \ "new").read[Boolean] and
+//          (JsPath \ "mileage").read[Option[String]] and
+//          (JsPath \ "firstRegistration").read[Option[String]]
+//
+//  )(Advert.apply _)
+//  }
 
 }

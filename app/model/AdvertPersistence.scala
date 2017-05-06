@@ -1,9 +1,9 @@
 package model
 
 trait AdvertPersistence {
-  def retrieveAllAdverts(): Seq[Advert]//TODO sorting
-  def retrieveAdvert(id: String): Advert
-  def createAdvert(advert: Advert): Advert
-  def updateAdvert(advert: Advert): Advert
-  def deleteAdvert(id: String): Boolean
+  def retrieveAll(): Seq[Advert]//TODO sorting
+  def retrieve(id: String): Option[Advert]
+  def create(advert: Advert): Advert
+  def update(advert: Advert): Advert
+  def delete(id: String): Boolean
 }

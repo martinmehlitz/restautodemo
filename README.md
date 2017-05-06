@@ -1,6 +1,27 @@
 # restautodemo
 
+# start
+
+# endpoints
+
+## GET /advert
+
+## GET /advert/id
+
+## POST /advert
+
+## PUT /advert/id
+
+## DELETE /advert/id
+
 TODO explain the paths
+
+
+### OPEN Issues
+
+* Implementation of error handling
+* Database persistence
+
 
 ### Requirements
 
